@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Client>
+  <Surname>Bloggs</Surname>
+  <FirstName>Joe Peter</FirstName>
+  <IdentityType>Identity Document </IdentityType>
+  <IdentityNumber>7202025074084</IdentityNumber>
+  <DateOfBirth>1972/02/02</DateOfBirth>
+</Client>

@@ -1,0 +1,103 @@
+﻿@{
+    var ClientDetails = new BusinessLogic.Models.Client();
+    if (TempData["details"] != null)
+    {
+        ClientDetails = TempData["details"]  as BusinessLogic.Models.Client;
+    }
+ }
+
+<div class="panel1">
+    <div class="panel1heading">
+        Edit Client Details
+    </div>
+
+    <div ng-app="App" ng-controller="Ctrl">
+        
+        <form>
+            <div class="row">
+                Surname: <input ng-model="name">
+            </div>
+        
+            <div class="row">
+                FirstName: <input ng-model="firstname">
+            </div>
+
+            <div class="row">
+                Identity Type: <input ng-model="identitytype">
+            </div>
+
+             <div class="row">
+                Identity Number: <input ng-model="identitynumber">
+            </div>
+
+             <div class="row">
+                Date of birth: <input ng-model="dateofbirth">
+            </div>
+
+            <input type="button" value="{{btntext}}" ng-click="savedata()" />
+        </form>
+        
+    </div>
+
+    
+</div>
+
+<script>
+    var app = angular.module('App', []);
+    app.controller('Ctrl', function ($scope, $http) {
+        $scope.name = "@ClientDetails.Surname";
+        $scope.firstname = "@ClientDetails.Firstname";
+        $scope.identitytype = "@ClientDetails.IdentityType";
+        $scope.identitynumber = "@ClientDetails.IdentityNumber";
+        $scope.dateofbirth = "@ClientDetails.DateofBirth";
+
+
+        $scope.btntext = "Edit Client Details";
+
+
+        $scope.savedata = function () {
+
+            var myData = { Surname: $scope.name, Firstname: $scope.firstname, IdentityType: $scope.identitytype, IdentityNumber: $scope.identitynumber, DateofBirth: $scope.dateofbirth };
+            var finalData = JSON.stringify(myData);
+            //alert(finalData);
+
+            var data2 = $.param({
+                Surname: $scope.name,
+                Firstname: $scope.firstname,
+                IdentityType: $scope.identitytype,
+                IdentityNumber:$scope.identitynumber,
+                DateofBirth:$scope.dateofbirth
+            });
+            
+
+            $http({
+
+                method: 'POST',
+
+                url: 'api/HomeApi/SaveData',
+
+                data: finalData//{ Surname: $scope.name, Firstname: $scope.firstname, IdentityType: $scope.identitytype, IdentityNumber: $scope.identitynumber, DateofBirth: $scope.dateofbirth }//$scope.registration
+
+            }).success(function () {
+
+                $scope.btntext = "Save";
+
+                //$scope.registration = null;
+
+                alert('Data Submitted...!');
+
+            }).error(function () {
+
+                alert('Failed');
+
+            });
+
+        }
+    });
+
+
+    //function Edit() {
+       // alert({{name}});
+        
+    //}
+</script>

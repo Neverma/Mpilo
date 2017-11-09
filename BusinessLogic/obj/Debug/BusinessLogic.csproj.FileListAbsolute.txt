@@ -1,0 +1,4 @@
+C:\Mplio\NeverMpilo\BusinessLogic\bin\Debug\BusinessLogic.dll
+C:\Mplio\NeverMpilo\BusinessLogic\bin\Debug\BusinessLogic.pdb
+C:\Mplio\NeverMpilo\BusinessLogic\obj\Debug\BusinessLogic.dll
+C:\Mplio\NeverMpilo\BusinessLogic\obj\Debug\BusinessLogic.pdb
